@@ -1,3 +1,6 @@
 ﻿# generated files
 demo/
 screens/
+*.ts
+*.map
+!*.d.ts
