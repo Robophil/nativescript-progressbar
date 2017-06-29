@@ -2,11 +2,11 @@
   "name": "nativescript-progressbar",
   "version": "1.0.2",
   "description": "XML widget to create native Progress Bars in NativeScript apps.",
-   "main": "components.js",
+  "main": "components.js",
   "nativescript": {
     "platforms": {
-      "android": "1.6.0",
-      "ios": "1.6.0"
+      "android": "3.0.1",
+      "ios": "3.0.1"
     }
   },
   "repository": {
@@ -26,8 +26,7 @@
     "sebawita"
   ],
   "author": "Sebastian Witalec (https://github.com/sebawita)",
-  "contributors": [
-  ],
+  "contributors": [],
   "license": "Apache-2.0",
   "bugs": "https://github.com/sebawita/nativescript-progressbar/issues",
   "homepage": "https://github.com/sebawita/nativescript-progressbar"
