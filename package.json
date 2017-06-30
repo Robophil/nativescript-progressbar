@@ -25,6 +25,11 @@
     "ios",
     "sebawita"
   ],
+  "devDependencies": {
+    "tns-core-modules": "^3.0.1",
+    "tns-platform-declarations": "^3.0.1",
+    "typescript": "^2.4.1"
+  },
   "author": "Sebastian Witalec (https://github.com/sebawita)",
   "contributors": [],
   "license": "Apache-2.0",
