@@ -1,19 +1,18 @@
-import dependencyObservable = require("ui/core/dependency-observable");
-import view = require("ui/core/view");
-import proxy = require("ui/core/proxy");
-import color = require("color");
+import { DependencyObservable, Property, PropertyMetadata, PropertyMetadataSettings } from "ui/core/dependency-observable"
+import { View } from "ui/core/view"
+import { Color } from "color"
 
-export class CircleSegmentBar extends view.View {    
+export class CircleSegmentBar extends View {    
 
     constructor() {
         super();
     }
 
     //progress property
-    public static progressProperty = new dependencyObservable.Property(
+    public static progressProperty = new Property(
         "progress",
         "CircleSegmentBar",
-        new proxy.PropertyMetadata(false)
+        new PropertyMetadata(false, PropertyMetadataSettings.None)
     );
     get progress(): number {
         return this._getValue(CircleSegmentBar.progressProperty);
@@ -23,10 +22,10 @@ export class CircleSegmentBar extends view.View {
     }
 
     //text property
-    public static textProperty = new dependencyObservable.Property(
+    public static textProperty = new Property(
         "text",
         "CircleSegmentBar",
-        new proxy.PropertyMetadata(false)
+        new PropertyMetadata(false, PropertyMetadataSettings.None)
     );
     get text(): string {
         return this._getValue(CircleSegmentBar.textProperty);
@@ -36,10 +35,10 @@ export class CircleSegmentBar extends view.View {
     }
 
     //textSize property
-    public static textSizeProperty = new dependencyObservable.Property(
+    public static textSizeProperty = new Property(
         "textSize",
         "CircleSegmentBar",
-        new proxy.PropertyMetadata(false)
+        new PropertyMetadata(false, PropertyMetadataSettings.None)
     );
     get textSize(): number {
         return this._getValue(CircleSegmentBar.textSizeProperty);
@@ -49,10 +48,10 @@ export class CircleSegmentBar extends view.View {
     }
 
     //widthProgressBackground property
-    public static widthProgressBackgroundProperty = new dependencyObservable.Property(
+    public static widthProgressBackgroundProperty = new Property(
         "widthProgressBackground",
         "CircleSegmentBar",
-        new proxy.PropertyMetadata(false)
+        new PropertyMetadata(false, PropertyMetadataSettings.None)
     );
     get widthProgressBackground(): number {
         return this._getValue(CircleSegmentBar.widthProgressBackgroundProperty);
@@ -62,10 +61,10 @@ export class CircleSegmentBar extends view.View {
     }
 
     //widthProgressBarLine property
-    public static widthProgressBarLineProperty = new dependencyObservable.Property(
+    public static widthProgressBarLineProperty = new Property(
         "widthProgressBarLine",
         "CircleSegmentBar",
-        new proxy.PropertyMetadata(false)
+        new PropertyMetadata(false, PropertyMetadataSettings.None)
     );
     get widthProgressBarLine(): number {
         return this._getValue(CircleSegmentBar.widthProgressBarLineProperty);
@@ -75,36 +74,36 @@ export class CircleSegmentBar extends view.View {
     }
 
     //backgroundColor property
-    public static backgroundColorProperty = new dependencyObservable.Property(
+    public static backgroundColorProperty = new Property(
         "backgroundColorProperty",
         "CircleSegmentBar",
-        new proxy.PropertyMetadata(false)
+        new PropertyMetadata(false, PropertyMetadataSettings.None)
     );
-    get backgroundColor(): color.Color {
+    get backgroundColor(): Color {
         return this._getValue(CircleSegmentBar.backgroundColorProperty);
     }
-    set backgroundColor(value: color.Color) {
+    set backgroundColor(value: Color) {
         this._setValue(CircleSegmentBar.backgroundColorProperty, value);
     }
 
     //progressColor property
-    public static progressColorProperty = new dependencyObservable.Property(
+    public static progressColorProperty = new Property(
         "progressColor",
         "CircleSegmentBar",
-        new proxy.PropertyMetadata(false)
+        new PropertyMetadata(false, PropertyMetadataSettings.None)
     );
-    get progressColor(): color.Color {
+    get progressColor(): Color {
         return this._getValue(CircleSegmentBar.progressColorProperty);
     }
-    set progressColor(value: color.Color) {
+    set progressColor(value: Color) {
         this._setValue(CircleSegmentBar.progressColorProperty, value);
     }
 
     //linearGradient property
-    public static linearGradientProperty = new dependencyObservable.Property(
+    public static linearGradientProperty = new Property(
         "linearGradient",
         "CircleSegmentBar",
-        new proxy.PropertyMetadata(false)
+        new PropertyMetadata(false, PropertyMetadataSettings.None)
     );
     get linearGradient(): boolean {
         return this._getValue(CircleSegmentBar.linearGradientProperty);

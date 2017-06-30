@@ -1,13 +1,14 @@
-import viewModule = require("ui/core/view");
+import { DependencyObservable, Property, PropertyMetadata, PropertyMetadataSettings } from "ui/core/dependency-observable"
+import { Observable } from "data/observable"
+import { View } from "ui/core/view"
+import { Color } from "color"
 
-import observable = require("data/observable");
-import dependencyObservable = require("ui/core/dependency-observable");
-import color = require("color");
+import {LineProgressBar as LineProgressBarModule} from "./lineProgressBar-common"
+global.moduleMerge(LineProgressBarModule, exports);
 
-import common = require("./lineProgressBar-common");
-global.moduleMerge(common, exports);
+declare var com
 
-export class LineProgressBar extends common.LineProgressBar {
+export class LineProgressBar extends LineProgressBarModule {
     
     private _android: any;
 
@@ -15,8 +16,8 @@ export class LineProgressBar extends common.LineProgressBar {
         return this._android;
     }
 
-    public _createUI() {
-        this._android = new com.natasa.progressviews.LineProgressBar(this._context);
+    public createNativeView() {
+        return this._android = new com.natasa.progressviews.LineProgressBar(this._context);
     }
     
     
@@ -32,63 +33,64 @@ function onProgressPropertyChanged(data) {
     var mycomponent = data.object;
     mycomponent.android.setProgress(data.newValue);
 }
-common.LineProgressBar.progressProperty.metadata.onSetNativeValue = onProgressPropertyChanged;
+// LineProgressBar.progressProperty.metadata.onSetNativeValue = onProgressPropertyChanged;
+LineProgressBar.progressProperty.onValueChanged = onProgressPropertyChanged;
 
 //text property
 function onTextPropertyChanged(data) {
     var mycomponent = data.object;
     mycomponent.android.setText(data.newValue);
 }
-common.LineProgressBar.textProperty.metadata.onSetNativeValue = onTextPropertyChanged;
+LineProgressBar.textProperty.onValueChanged = onTextPropertyChanged;
 
 //textSize property
 function onTextSizePropertyChanged(data) {
     var mycomponent = data.object;
     mycomponent.android.setTextSize(data.newValue);
 }
-common.LineProgressBar.textSizeProperty.metadata.onSetNativeValue = onTextSizePropertyChanged;
+LineProgressBar.textSizeProperty.onValueChanged = onTextSizePropertyChanged;
 
 //widthProgressBackground property
 function onWidthProgressBackgroundPropertyChanged(data) {
     var mycomponent = data.object;
     mycomponent.android.setWidthProgressBackground(data.newValue);
 }
-common.LineProgressBar.widthProgressBackgroundProperty.metadata.onSetNativeValue = onWidthProgressBackgroundPropertyChanged;
+LineProgressBar.widthProgressBackgroundProperty.onValueChanged = onWidthProgressBackgroundPropertyChanged;
 
 //widthProgressBarLine property
 function onWidthProgressBarLinePropertyPropertyChanged(data) {
     var mycomponent = data.object;
     mycomponent.android.setWidthProgressBarLine(data.newValue);
 }
-common.LineProgressBar.widthProgressBarLineProperty.metadata.onSetNativeValue = onWidthProgressBarLinePropertyPropertyChanged;
+LineProgressBar.widthProgressBarLineProperty.onValueChanged = onWidthProgressBarLinePropertyPropertyChanged;
 
 //backgroundColor property
 function onBackgroundColorPropertyPropertyChanged(data) {
-    if(color.Color.isValid(data.newValue)){
+    if(Color.isValid(data.newValue)){
         var mycomponent = data.object;
-        var droidColor = new color.Color(data.newValue).android;
+        var droidColor = new Color(data.newValue).android;
         mycomponent.android.setBackgroundColor(droidColor);
     } else {
         console.log("The background color: " + data.newValue + " is invalid.");
     }
 }
-common.LineProgressBar.backgroundColorProperty.metadata.onSetNativeValue = onBackgroundColorPropertyPropertyChanged;
+LineProgressBar.backgroundColorProperty.onValueChanged = onBackgroundColorPropertyPropertyChanged;
 
 //progressColor property
 function onProgressColorPropertyPropertyChanged(data) {
-    if(color.Color.isValid(data.newValue)){
+    if(Color.isValid(data.newValue)){
         var mycomponent = data.object;
-        var droidColor = new color.Color(data.newValue).android;
+        var droidColor = new Color(data.newValue).android;
         mycomponent.android.setProgressColor(droidColor);
     } else {
         console.log("The progress color: " + data.newValue + " is invalid.");
     }
 }
-common.LineProgressBar.progressColorProperty.metadata.onSetNativeValue = onProgressColorPropertyPropertyChanged;
+LineProgressBar.progressColorProperty.onValueChanged = onProgressColorPropertyPropertyChanged;
 
 //linearGradient property
 function onLinearGradientPropertyPropertyChanged(data) {
     var mycomponent = data.object;
     mycomponent.android.setLinearGradientProgress(data.newValue);
 }
-common.LineProgressBar.linearGradientProperty.metadata.onSetNativeValue = onLinearGradientPropertyPropertyChanged;
+LineProgressBar.linearGradientProperty.onValueChanged = onLinearGradientPropertyPropertyChanged;

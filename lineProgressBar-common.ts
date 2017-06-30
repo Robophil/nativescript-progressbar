@@ -1,19 +1,18 @@
-import dependencyObservable = require("ui/core/dependency-observable");
-import view = require("ui/core/view");
-import proxy = require("ui/core/proxy");
-import color = require("color");
+import { DependencyObservable, Property, PropertyMetadata, PropertyMetadataSettings } from "ui/core/dependency-observable"
+import { View } from "ui/core/view"
+import { Color } from "color"
 
-export class LineProgressBar extends view.View {    
+export class LineProgressBar extends View {
 
     constructor() {
         super();
     }
 
     //progress property
-    public static progressProperty = new dependencyObservable.Property(
+    public static progressProperty = new Property(
         "progress",
         "LineProgressBar",
-        new proxy.PropertyMetadata(false)
+        new PropertyMetadata(false, PropertyMetadataSettings.None)
     );
     get progress(): number {
         return this._getValue(LineProgressBar.progressProperty);
@@ -23,10 +22,10 @@ export class LineProgressBar extends view.View {
     }
 
     //text property
-    public static textProperty = new dependencyObservable.Property(
+    public static textProperty = new Property(
         "text",
         "LineProgressBar",
-        new proxy.PropertyMetadata(false)
+        new PropertyMetadata(false, PropertyMetadataSettings.None)
     );
     get text(): string {
         return this._getValue(LineProgressBar.textProperty);
@@ -36,10 +35,10 @@ export class LineProgressBar extends view.View {
     }
 
     //textSize property
-    public static textSizeProperty = new dependencyObservable.Property(
+    public static textSizeProperty = new Property(
         "textSize",
         "LineProgressBar",
-        new proxy.PropertyMetadata(false)
+        new PropertyMetadata(false, PropertyMetadataSettings.None)
     );
     get textSize(): number {
         return this._getValue(LineProgressBar.textSizeProperty);
@@ -49,10 +48,10 @@ export class LineProgressBar extends view.View {
     }
 
     //widthProgressBackground property
-    public static widthProgressBackgroundProperty = new dependencyObservable.Property(
+    public static widthProgressBackgroundProperty = new Property(
         "widthProgressBackground",
         "LineProgressBar",
-        new proxy.PropertyMetadata(false)
+        new PropertyMetadata(false, PropertyMetadataSettings.None)
     );
     get widthProgressBackground(): number {
         return this._getValue(LineProgressBar.widthProgressBackgroundProperty);
@@ -62,10 +61,10 @@ export class LineProgressBar extends view.View {
     }
 
     //widthProgressBarLine property
-    public static widthProgressBarLineProperty = new dependencyObservable.Property(
+    public static widthProgressBarLineProperty = new Property(
         "widthProgressBarLine",
         "LineProgressBar",
-        new proxy.PropertyMetadata(false)
+        new PropertyMetadata(false, PropertyMetadataSettings.None)
     );
     get widthProgressBarLine(): number {
         return this._getValue(LineProgressBar.widthProgressBarLineProperty);
@@ -75,36 +74,36 @@ export class LineProgressBar extends view.View {
     }
 
     //backgroundColor property
-    public static backgroundColorProperty = new dependencyObservable.Property(
+    public static backgroundColorProperty = new Property(
         "backgroundColorProperty",
         "LineProgressBar",
-        new proxy.PropertyMetadata(false)
+        new PropertyMetadata(false, PropertyMetadataSettings.None)
     );
-    get backgroundColor(): color.Color {
+    get backgroundColor(): Color {
         return this._getValue(LineProgressBar.backgroundColorProperty);
     }
-    set backgroundColor(value: color.Color) {
+    set backgroundColor(value: Color) {
         this._setValue(LineProgressBar.backgroundColorProperty, value);
     }
 
     //progressColor property
-    public static progressColorProperty = new dependencyObservable.Property(
+    public static progressColorProperty = new Property(
         "progressColor",
         "LineProgressBar",
-        new proxy.PropertyMetadata(false)
+        new PropertyMetadata(false, PropertyMetadataSettings.None)
     );
-    get progressColor(): color.Color {
+    get progressColor(): Color {
         return this._getValue(LineProgressBar.progressColorProperty);
     }
-    set progressColor(value: color.Color) {
+    set progressColor(value: Color) {
         this._setValue(LineProgressBar.progressColorProperty, value);
     }
 
     //linearGradient property
-    public static linearGradientProperty = new dependencyObservable.Property(
+    public static linearGradientProperty = new Property(
         "linearGradient",
         "LineProgressBar",
-        new proxy.PropertyMetadata(false)
+        new PropertyMetadata(false, PropertyMetadataSettings.None)
     );
     get linearGradient(): boolean {
         return this._getValue(LineProgressBar.linearGradientProperty);
