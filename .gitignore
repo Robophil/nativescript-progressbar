@@ -209,3 +209,4 @@ demo/platforms/*
 
 *.js
 *js.map
+demo/app/*.js
