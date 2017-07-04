@@ -1,91 +1,91 @@
-import { DependencyObservable, Property, PropertyMetadata, PropertyMetadataSettings } from "ui/core/dependency-observable"
-import { Observable } from "data/observable"
 import { View } from "ui/core/view"
 import { Color } from "color"
 
-import {ArcProgressBar as ArcProgressBarModule} from "./arcProgressBar-common"
+import {
+    ArcProgressBar as ArcProgressBarModule,
+    progressProperty, textProperty, textSizeProperty,
+    widthProgressBackgroundProperty, widthProgressBarLineProperty,
+    backgroundColorProperty, progressColorProperty
+} from "./arcProgressBar-common"
+
 global.moduleMerge(ArcProgressBarModule, exports)
 
 declare var com
 
 export class ArcProgressBar extends ArcProgressBarModule {
-    
-    private _android: any;
 
-    get android(): any {
-        return this._android;
+    private _nativeView: any;
+
+    get nativeView(): any {
+        return this._nativeView;
     }
 
     public createNativeView() {
-        return this._android = new com.natasa.progressviews.ArcProgressBar(this._context);
+        return this._nativeView = new com.natasa.progressviews.ArcProgressBar(this._context);
     }
-    
-    
+
+
     constructor(context) {
         super();
     }
 
-}
-
-
-//progress property
-function onProgressPropertyChanged(data) {
-    var mycomponent = data.object;
-    mycomponent.android.setProgress(data.newValue);
-}
-ArcProgressBar.progressProperty.onValueChanged = onProgressPropertyChanged;
-
-//text property
-function onTextPropertyChanged(data) {
-    var mycomponent = data.object;
-    mycomponent.android.setText(data.newValue);
-}
-ArcProgressBar.textProperty.onValueChanged = onTextPropertyChanged;
-
-//textSize property
-function onTextSizePropertyChanged(data) {
-    var mycomponent = data.object;
-    mycomponent.android.setTextSize(data.newValue);
-}
-ArcProgressBar.textSizeProperty.onValueChanged = onTextSizePropertyChanged;
-
-//widthProgressBackground property
-function onWidthProgressBackgroundPropertyChanged(data) {
-    var mycomponent = data.object;
-    mycomponent.android.setWidthProgressBackground(data.newValue);
-}
-ArcProgressBar.widthProgressBackgroundProperty.onValueChanged = onWidthProgressBackgroundPropertyChanged;
-
-//widthProgressBarLine property
-function onWidthProgressBarLinePropertyPropertyChanged(data) {
-    var mycomponent = data.object;
-    mycomponent.android.setWidthProgressBarLine(data.newValue);
-}
-ArcProgressBar.widthProgressBarLineProperty.onValueChanged = onWidthProgressBarLinePropertyPropertyChanged;
-
-//backgroundColor property
-function onBackgroundColorPropertyPropertyChanged(data) {
-    if(Color.isValid(data.newValue)){
-        var mycomponent = data.object;
-        var droidColor = new Color(data.newValue).android;
-        mycomponent.android.setBackgroundColor(droidColor);
-    } else {
-        console.log("The background color: " + data.newValue + " is invalid.");
+    /**
+     * set progress value
+     * @param value 
+     */
+    [progressProperty.setNative](value: number) {
+        this.nativeView.setProgress(value)
     }
-}
-ArcProgressBar.backgroundColorProperty.onValueChanged = onBackgroundColorPropertyPropertyChanged;
 
-//progressColor property
-function onProgressColorPropertyPropertyChanged(data) {
-    if(Color.isValid(data.newValue)){
-        var mycomponent = data.object;
-        var droidColor = new Color(data.newValue).android;
-        mycomponent.android.setProgressColor(droidColor);
-    } else {
-        console.log("The progress color: " + data.newValue + " is invalid.");
+    /**
+     * set the progress text
+     * @param value 
+     */
+    [textProperty.setNative](value: string) {
+        this.nativeView.setText(value)
     }
+
+    /**
+     * set the progress textSize
+     * @param value 
+     */
+    [textSizeProperty.setNative](value: number) {
+        this.nativeView.setTextSize(value)
+    }
+
+    /**
+     * set the progress widthProgressBackground
+     * @param value 
+     */
+    [widthProgressBackgroundProperty.setNative](value: number) {
+        this.nativeView.setWidthProgressBackground(value)
+    }
+
+    /**
+     * set the progress widthProgressBarLine
+     * @param value 
+     */
+    [widthProgressBarLineProperty.setNative](value: number) {
+        this.nativeView.setWidthProgressBarLine(value)
+    }
+
+    /**
+     * set the progress backgroundColor
+     * @param value 
+     */
+    [backgroundColorProperty.setNative](value: Color) {
+        if(Color.isValid(value)) this.nativeView.setBackgroundColor(value.android)
+    }
+
+    /**
+     * set the progress Color
+     * @param value 
+     */
+    [progressColorProperty.setNative](value: Color) {
+        if(Color.isValid(value)) this.nativeView.setProgressColor(value.android)
+    }
+
 }
-ArcProgressBar.progressColorProperty.onValueChanged = onProgressColorPropertyPropertyChanged;
 
 /*
 //linearGradient property

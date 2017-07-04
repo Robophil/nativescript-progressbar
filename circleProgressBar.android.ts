@@ -1,23 +1,26 @@
-import { DependencyObservable, Property, PropertyMetadata, PropertyMetadataSettings } from "ui/core/dependency-observable"
-import { Observable } from "data/observable"
 import { View } from "ui/core/view"
 import { Color } from "color"
 
-import {CircleProgressBar as CircleProgressBarModule} from "./circleProgressBar-common"
+import {
+    CircleProgressBar as CircleProgressBarModule,
+    progressProperty, textProperty, textSizeProperty,
+    widthProgressBackgroundProperty, widthProgressBarLineProperty,
+    backgroundColorProperty, progressColorProperty
+} from "./circleProgressBar-common"
 global.moduleMerge(CircleProgressBarModule, exports);
 
 declare var com
 
 export class CircleProgressBar extends CircleProgressBarModule {
     
-    private _android: any;
+    private _nativeView: any;
 
-    get android(): any {
-        return this._android;
+    get nativeView(): any {
+        return this._nativeView;
     }
 
     public createNativeView() {
-        return this._android = new com.natasa.progressviews.CircleProgressBar(this._context);
+        return this._nativeView = new com.natasa.progressviews.CircleProgressBar(this._context);
     }
     
     
@@ -25,71 +28,60 @@ export class CircleProgressBar extends CircleProgressBarModule {
         super();
     }
 
-}
-
-
-//progress property
-function onProgressPropertyChanged(data) {
-    var mycomponent = data.object;
-    mycomponent.android.setProgress(data.newValue);
-}
-CircleProgressBar.progressProperty.onValueChanged = onProgressPropertyChanged;
-
-//text property
-function onTextPropertyChanged(data) {
-    var mycomponent = data.object;
-    mycomponent.android.setText(data.newValue);
-}
-CircleProgressBar.textProperty.onValueChanged = onTextPropertyChanged;
-
-//textSize property
-function onTextSizePropertyChanged(data) {
-    var mycomponent = data.object;
-    mycomponent.android.setTextSize(data.newValue);
-}
-CircleProgressBar.textSizeProperty.onValueChanged = onTextSizePropertyChanged;
-
-//widthProgressBackground property
-function onWidthProgressBackgroundPropertyChanged(data) {
-    var mycomponent = data.object;
-    mycomponent.android.setWidthProgressBackground(data.newValue);
-}
-CircleProgressBar.widthProgressBackgroundProperty.onValueChanged = onWidthProgressBackgroundPropertyChanged;
-
-//widthProgressBarLine property
-function onWidthProgressBarLinePropertyPropertyChanged(data) {
-    var mycomponent = data.object;
-    mycomponent.android.setWidthProgressBarLine(data.newValue);
-}
-CircleProgressBar.widthProgressBarLineProperty.onValueChanged = onWidthProgressBarLinePropertyPropertyChanged;
-
-//backgroundColor property
-function onBackgroundColorPropertyPropertyChanged(data) {
-    if(Color.isValid(data.newValue)){
-        var mycomponent = data.object;
-        var droidColor = new Color(data.newValue).android;
-        mycomponent.android.setBackgroundColor(droidColor);
-    } else {
-        console.log("The background color: " + data.newValue + " is invalid.");
+    /**
+     * set progress value
+     * @param value 
+     */
+    [progressProperty.setNative](value: number) {
+        this.nativeView.setProgress(value)
     }
-}
-CircleProgressBar.backgroundColorProperty.onValueChanged = onBackgroundColorPropertyPropertyChanged;
 
-//progressColor property
-function onProgressColorPropertyPropertyChanged(data) {
-    if(Color.isValid(data.newValue)){
-        var mycomponent = data.object;
-        var droidColor = new Color(data.newValue).android;
-        mycomponent.android.setProgressColor(droidColor);
-    } else {
-        console.log("The progress color: " + data.newValue + " is invalid.");
+    /**
+     * set the progress text
+     * @param value 
+     */
+    [textProperty.setNative](value: string) {
+        this.nativeView.setText(value)
     }
-}
-CircleProgressBar.progressColorProperty.onValueChanged = onProgressColorPropertyPropertyChanged;
 
-//linearGradient property
-function onLinearGradientPropertyPropertyChanged(data) {
-    var mycomponent = data.object;
-    mycomponent.android.setLinearGradientProgress(data.newValue);
+    /**
+     * set the progress textSize
+     * @param value 
+     */
+    [textSizeProperty.setNative](value: number) {
+        this.nativeView.setTextSize(value)
+    }
+
+    /**
+     * set the progress widthProgressBackground
+     * @param value 
+     */
+    [widthProgressBackgroundProperty.setNative](value: number) {
+        this.nativeView.setWidthProgressBackground(value)
+    }
+
+    /**
+     * set the progress widthProgressBarLine
+     * @param value 
+     */
+    [widthProgressBarLineProperty.setNative](value: number) {
+        this.nativeView.setWidthProgressBarLine(value)
+    }
+
+    /**
+     * set the progress backgroundColor
+     * @param value 
+     */
+    [backgroundColorProperty.setNative](value: Color) {
+        if(Color.isValid(value)) this.nativeView.setBackgroundColor(value.android)
+    }
+
+    /**
+     * set the progress Color
+     * @param value 
+     */
+    [progressColorProperty.setNative](value: Color) {
+        if(Color.isValid(value)) this.nativeView.setProgressColor(value.android)
+    }
+
 }
-CircleProgressBar.linearGradientProperty.onValueChanged = onLinearGradientPropertyPropertyChanged;
