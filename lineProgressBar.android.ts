@@ -5,7 +5,7 @@ import {
     LineProgressBar as LineProgressBarModule,
      progressProperty, textProperty, textSizeProperty,
     widthProgressBackgroundProperty, widthProgressBarLineProperty,
-    backgroundColorProperty, progressColorProperty
+    backgroundColorProperty, progressColorProperty, linearGradientProperty
 } from "./lineProgressBar-common"
 global.moduleMerge(LineProgressBarModule, exports);
 
@@ -28,7 +28,7 @@ export class LineProgressBar extends LineProgressBarModule {
         super();
     }
 
-        /**
+    /**
      * set progress value
      * @param value 
      */
@@ -82,6 +82,14 @@ export class LineProgressBar extends LineProgressBarModule {
      */
     [progressColorProperty.setNative](value: Color) {
         if(Color.isValid(value)) this.nativeView.setProgressColor(value.android)
+    }
+
+    /**
+     * set the value of linear gradient
+     * @param value 
+     */
+    [linearGradientProperty.setNative](value: boolean) {
+        this.nativeView.setLinearGradientProgress(value)
     }
 
 }

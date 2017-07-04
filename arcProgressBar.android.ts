@@ -5,7 +5,7 @@ import {
     ArcProgressBar as ArcProgressBarModule,
     progressProperty, textProperty, textSizeProperty,
     widthProgressBackgroundProperty, widthProgressBarLineProperty,
-    backgroundColorProperty, progressColorProperty
+    backgroundColorProperty, progressColorProperty, linearGradientProperty
 } from "./arcProgressBar-common"
 
 global.moduleMerge(ArcProgressBarModule, exports)
@@ -83,6 +83,14 @@ export class ArcProgressBar extends ArcProgressBarModule {
      */
     [progressColorProperty.setNative](value: Color) {
         if(Color.isValid(value)) this.nativeView.setProgressColor(value.android)
+    }
+
+    /**
+     * set the value of linear gradient
+     * @param value 
+     */
+    [linearGradientProperty.setNative](value: boolean) {
+        this.nativeView.setLinearGradientProgress(value)
     }
 
 }
