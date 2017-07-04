@@ -5,7 +5,7 @@ import {
     CircleProgressBar as CircleProgressBarModule,
     progressProperty, textProperty, textSizeProperty,
     widthProgressBackgroundProperty, widthProgressBarLineProperty,
-    backgroundColorProperty, progressColorProperty, linearGradientProperty
+    backgroundColorProperty, progressColorProperty
 } from "./circleProgressBar-common"
 global.moduleMerge(CircleProgressBarModule, exports);
 
@@ -84,12 +84,12 @@ export class CircleProgressBar extends CircleProgressBarModule {
         if(Color.isValid(value)) this.nativeView.setProgressColor(value.android)
     }
 
-    /**
-     * set the value of linear gradient
-     * @param value 
-     */
-    [linearGradientProperty.setNative](value: boolean) {
-        this.nativeView.setLinearGradientProgress(value)
-    }
+    // /**
+    //  * set the value of linear gradient
+    //  * @param value 
+    //  */
+    // [linearGradientProperty.setNative](value: boolean) {
+    //     this.nativeView.setLinearGradientProgress(value)
+    // }
 
 }

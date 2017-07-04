@@ -61,9 +61,9 @@ export const progressColorProperty = new Property<ArcProgressBar, Color>({
 })
 progressColorProperty.register(ArcProgressBar)
 
-//linearGradient property
-export const linearGradientProperty = new Property<ArcProgressBar, boolean>({
-    name: "linearGradient",
-    defaultValue: false
-})
-linearGradientProperty.register(ArcProgressBar)
+// //linearGradient property
+// export const linearGradientProperty = new Property<ArcProgressBar, boolean>({
+//     name: "linearGradient",
+//     defaultValue: false
+// })
+// linearGradientProperty.register(ArcProgressBar)

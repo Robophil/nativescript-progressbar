@@ -60,9 +60,9 @@ export const progressColorProperty = new Property<CircleSegmentBar, Color>({
 })
 progressColorProperty.register(CircleSegmentBar)
 
-//linearGradient property
-export const linearGradientProperty = new Property<CircleSegmentBar, boolean>({
-    name: "linearGradient",
-    defaultValue: false
-})
-linearGradientProperty.register(CircleSegmentBar)
+// //linearGradient property
+// export const linearGradientProperty = new Property<CircleSegmentBar, boolean>({
+//     name: "linearGradient",
+//     defaultValue: false
+// })
+// linearGradientProperty.register(CircleSegmentBar)
