@@ -1,6 +1,6 @@
-﻿
-function pageLoaded(args) {
+﻿import { mainViewModel } from "./main-view-model";
+
+export function pageLoaded(args) {
   var page = args.object;
-  page.bindingContext = {};
+  page.bindingContext = mainViewModel;
 }
-exports.pageLoaded = pageLoaded;

@@ -2,17 +2,20 @@
       xmlns:pb="nativescript-progressbar" 
       loaded="pageLoaded">
       
-    <stack-layout>
-        <pb:CircleSegmentBar
-        progress="{{progress}}"
-        text="{{message}}"
+    <stack-layout marginTop="20" padding="50">
+        <pb:CircleProgressBar
+        progress="{{ progress }}"
+        text="{{ message }}"
         textSize="50"
         widthProgressBackground="20"
         widthProgressBarLine="50"
         backgroundColor="red"
-        progressColor="blue"
-        linearGradient="false"
+        progressColor="white"
+        linearGradient="true"
         width="200"
         />
+
+        <Button text="TAP" tap="{{ tapAction }}" />
+        <Label text="{{ message }}" class="message" textWrap="true"/>
     </stack-layout>
 </page>
