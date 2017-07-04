@@ -208,3 +208,4 @@ nativescript-fab.sln
 demo/platforms/*
 
 *.js
+*js.map

@@ -5,8 +5,8 @@
   "main": "components.js",
   "nativescript": {
     "platforms": {
-      "android": "3.1.1",
-      "ios": "3.0.1"
+      "android": "3.1.0",
+      "ios": "3.1.0"
     }
   },
   "repository": {
@@ -26,8 +26,8 @@
     "sebawita"
   ],
   "devDependencies": {
-    "tns-core-modules": "^3.1.1",
-    "tns-platform-declarations": "^3.1.1",
+    "tns-core-modules": "^3.1.0",
+    "tns-platform-declarations": "^3.1.0",
     "typescript": "^2.4.1"
   },
   "author": "Sebastian Witalec (https://github.com/sebawita)",
